@@ -1,5 +1,5 @@
 import { FastifyInstance } from 'fastify';
-import type { Todo } from 'shared/src/types';
+import type { Todo } from 'shared';
 export default async function todoRoutes(app: FastifyInstance) {
   const mem: Todo[] = [{ id: 1, title: 'Learn Full‑Stack' }];
   app.get('/api/todos', async () => mem);

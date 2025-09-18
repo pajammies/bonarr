@@ -1,20 +1,23 @@
-version: '3.9'
 services:
-  backend:
-    build: ./apps/backend
-    env_file:
-      - ./apps/backend/.env
-    ports:
-      - "3005:3001"
-    networks: [appnet]
-  frontend:
-    build: ./apps/frontend
+  bonarr:
+    image: pajammies/bonarr:latest
+    container_name: bonarr
     environment:
-      - VITE_API_BASE_URL=http://backend:3001
+      - NODE_ENV=production
+      - PORT=3005
+      # When frontend is served by the same backend, same-origin requests do not require CORS,
+      # but leaving this set to the public origin is harmless.
+      - CORS_ORIGIN=http://localhost:3005
     ports:
-      - "6789:80"
-    networks: [appnet]
-volumes:
-  pgdata:
-networks:
-  appnet:
+      - "3005:3005"
+    volumes:
+      # Mount Real Debrid library
+      - /docker/media_stack/media:/media
+      # Mount symlink staging directory
+      #- /path/to/local/symlinks:/mnt/bonarr/symlinks
+      # Optional: Mount configuration file
+      - /docker/media_stack/bonarr/config.json:/app/bonarr-config.json
+    devices:
+      # Optional: If you need to use rclone with system devices
+      - /dev/fuse:/dev/fuse
+    privileged: true  # Required for rclone mounting

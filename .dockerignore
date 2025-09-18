@@ -1,0 +1,35 @@
+# Node/TypeScript monorepo
+node_modules
+**/node_modules
+**/dist
+**/build
+**/out
+
+# Vite/Svelte cache
+.vite
+**/.vite
+.svelte-kit
+
+# Test/coverage
+coverage
+.nyc_output
+
+# VCS & CI
+.git
+.github
+.gitignore
+
+# Environment & secrets
+.env
+.env.*
+!/.env.example
+
+# App runtime state
+state
+
+# OS/editor junk
+.DS_Store
+Thumbs.db
+*.log
+.vscode
+.idea
