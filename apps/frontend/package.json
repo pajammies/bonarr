@@ -14,12 +14,12 @@
     "@tsconfig/svelte": "^5.0.4",
     "svelte": "^5.38.1",
     "svelte-check": "^4.3.1",
-    "typescript": "~5.8.3",
+    "typescript": "~5.9.2",
     "vite": "^7.1.2"
   },
   "dependencies": {
-    "svelte-spa-router": "^3",
-    "zod": "^3",
+    "svelte-spa-router": "^4",
+    "zod": "^4",
     "shared": "*"
   }
 }

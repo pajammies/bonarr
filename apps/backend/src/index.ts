@@ -5,10 +5,12 @@ import healthRoutes from './routes/health.js';
 import todoRoutes from './routes/todos.js';
 import qbittorrentRoutes from './routes/qbittorrent.js';
 import fastifyStatic from '@fastify/static';
+import formbody from '@fastify/formbody';
 import { join } from 'node:path';
 
 const app = Fastify({ logger: true });
 app.register(corsPlugin);
+app.register(formbody);
 
 // Serve frontend static files from /app/public (populated by Docker image)
 const publicDir = join(process.cwd(), 'public');
